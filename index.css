@@ -1,7 +1,7 @@
 #container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 #game-area{
 
@@ -25,4 +25,10 @@
     font-size: xx-large;
     font-weight: 900;
     font-style: normal;    
+}
+
+#radio_buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

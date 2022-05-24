@@ -5,10 +5,10 @@ var board = [
 ]
 var ai = "O";
 var human = "X"
-
+var choice = document.querySelectorAll("[name='player-option']")
 var options = document.getElementsByClassName('row');
 
-var result = document.getElementById('result').children[0]
+var result = document.getElementById('result').children[1]
 
 
 function onLoad() {
@@ -28,20 +28,20 @@ function onLoad() {
 
             //Bot Move
             const botMove = bestMove();
-
+            console.log(botMove)
             if (botMove) {
                 board[botMove.i][botMove.j] = ai;
                 const botPlace = document.querySelector(
-                  `[data-row='${botMove.i}'][data-column='${botMove.j}'] span`
+                  `[data-row='${botMove.i}'][data-col='${botMove.j}'] span`
                 );
-        
+                    console.log(botPlace)
                 botPlace.innerHTML = ai;
               }
 
 
 
             //Check Result
-            const outcome = checkResult();
+            const outcome = checkWinner();
 
             if (outcome == "tie") {
                 result.innerHTML = "Match Tie"
@@ -54,13 +54,13 @@ function onLoad() {
 
 
 
-
-function checkResult() {
+const equals = (a, b, c) => {
+    return (a == b && b == c && a != "");
+}
+const  checkWinner=()=> {
     var winner = null;
 
-    const equals = (a, b, c) => {
-        return (a == b && b == c && a != "");
-    }
+  
 
 
     //horizontal
@@ -196,16 +196,17 @@ const scores = {
   };
   
   //Update player option initally
-  let start = options[0].value;
+  let start = choice[0].value;
+
   updateSelector(start);
 
   //Update player option on option change
-//   options.forEach((e) => {
-//     e.addEventListener("change", (f) => {
-//       const { value } = f.target;
-//       updateSelector(value);
-//     });
-//   });
+  choice.forEach((e) => {
+    e.addEventListener("change", (f) => {
+      const { value } = f.target;
+      updateSelector(value);
+    });
+  });
 onLoad();
 
 
