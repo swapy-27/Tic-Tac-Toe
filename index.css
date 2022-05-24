@@ -15,3 +15,14 @@
     margin: 5px;
     background-color: aquamarine;
 }
+.row > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.row > div > span{
+    font-size: xx-large;
+    font-weight: 900;
+    font-style: normal;    
+}
